@@ -15,7 +15,8 @@ require __DIR__ . "/Commands/class.logsys.php";
       "table" => "users",
 	  "servers" => "servers", #Server List In Database
 	  "userservers" => "userservers", #User Servers
-      "token_table" => "resetTokens"
+      "token_table" => "resetTokens",
+	  "authenticationKey" => ""
   ),
   "features" => array(
     "auto_init" => true
