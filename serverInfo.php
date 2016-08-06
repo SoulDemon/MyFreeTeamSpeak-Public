@@ -238,9 +238,7 @@ if( isset($_POST['newName']) ){
 
               <div class="row">
                   <div class="col-lg-9 main-chart">
-                  <p>
-			You registered on MyFreeTeamSpeak <strong><?php echo \Fr\LS::joinedSince(); ?></strong> ago.
-		</p>
+
                   	<!--<div class="row mtbox">
                   		<div class="col-md-2 col-sm-2 col-md-offset-1 box0">
                   			<div class="box1">
