@@ -18,6 +18,10 @@ require __DIR__ . "/Commands/class.logsys.php";
       "token_table" => "resetTokens",
 	  "authenticationKey" => "" #Authentication Key, You can probably get one in the IRC if i'm nice ;) http://webchat.esper.net/?channels=#MyFreeTeamSpeak
   ),
+  "tsSetup" => array (
+  "tooltip" => "fox", #Icon for tooltip url?
+  "hostbutton" => "" #Host Button URL
+  ),
   "features" => array(
     "auto_init" => true
   ),
