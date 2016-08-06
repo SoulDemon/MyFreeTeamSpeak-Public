@@ -11,11 +11,10 @@ Install freets3v2.sql,
 <p></p>
 Edit Config.php
 
-
-* TODO LIST *
+TODO LIST:
 <p></p>
-Install folder [future]
-
+Install folder [in future]
+<p></p>
 ** You are allow to change MyFreeTeamSpeak out! **
 <p></p>
 ** It will be cool if you add MyFreeTeamSpeak via credits/copyright/footer! **
