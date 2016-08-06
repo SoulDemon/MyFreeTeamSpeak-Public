@@ -32,4 +32,6 @@ Personal Server Editting/Details [4% Done] List Below what is expected
 
 * Host Button
 
+* Reset Button?
+
 Any Others?...
