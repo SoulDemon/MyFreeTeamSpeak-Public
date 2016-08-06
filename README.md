@@ -14,22 +14,22 @@ Install folder [future]
 
 Personal Server Editting/Details [4% Done] List Below what is expected
 
-Server Name
+*Server Name
 
-Server Port
+*Server Port
 
-Server Slots
+*Server Slots
 
-Reserved Slots
+*Reserved Slots
 
-Welcome Message
+*Welcome Message
 
-Host Message
+*Host Message
 
-Host Banner
+*Host Banner
 
-Host Banner Url
+*Host Banner Url
 
-Host Button
+*Host Button
 
 Any Others?...
