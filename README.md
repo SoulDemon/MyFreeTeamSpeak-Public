@@ -12,5 +12,24 @@ Edit Config.php
 * TODO LIST*
 Install folder [future]
 
-** You are allow to change MyFreeTeamSpeak out! **
-** It will be cool if you add MyFreeTeamSpeak via credits/copyright/footer! **
+Personal Server Editting/Details [4% Done] List Below what is expected
+
+Server Name
+
+Server Port
+
+Server Slots
+
+Reserved Slots
+
+Welcome Message
+
+Host Message
+
+Host Banner
+
+Host Banner Url
+
+Host Button
+
+Any Others?...
