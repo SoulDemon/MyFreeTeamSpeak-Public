@@ -24,7 +24,7 @@ if( isset($_POST['newName']) ){
       if( isset($_POST['submit']) ){
           $createAccount = \Fr\LS::newToken();	
 			if($createAccount === true){
-            echo "<label>Success Server Created.</label>";
+            echo "<label>Success Token Created!</label>";
           }
 		  else
 		  {
