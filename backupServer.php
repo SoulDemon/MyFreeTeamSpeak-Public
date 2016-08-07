@@ -284,8 +284,7 @@ if( isset($_POST['newName']) ){
                       	<div class="col-md-4 col-sm-4 mb">
 
                       	<?php
-						#echo \Fr\LS::backupServer();
-						#echo \Fr\LS::restoreBackup();
+						echo \Fr\LS::backupServer();
 						?>
 
                       	

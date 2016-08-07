@@ -16,7 +16,8 @@ require __DIR__ . "/Commands/class.logsys.php";
       "servers" => "servers", #Server List In Database
       "userservers" => "userservers", #User Servers
       "token_table" => "resetTokens",
-      "authenticationKey" => "" #Authentication Key, You can probably get one in the IRC if i'm nice ;) http://webchat.esper.net/?channels=#MyFreeTeamSpeak
+      "updateCheck" => "true", #true or false
+	  "authenticationKey" => "a53sf3" #Authentication Key, Used to notify updates http://webchat.esper.net/?channels=#MyFreeTeamSpeak
   ),
   "tsSetup" => array (
   "tooltip" => "", #Icon for tooltip url?
