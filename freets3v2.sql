@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2016 at 10:54 PM
+-- Generation Time: Aug 07, 2016 at 07:43 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.5.37
 
@@ -39,6 +39,7 @@ CREATE TABLE `resettokens` (
 --
 
 CREATE TABLE `servers` (
+  `location` text NOT NULL,
   `ip` varchar(50) NOT NULL,
   `query` varchar(500) NOT NULL,
   `user` varchar(500) NOT NULL,
@@ -73,7 +74,8 @@ CREATE TABLE `users` (
 CREATE TABLE `userservers` (
   `user_id` int(50) NOT NULL,
   `ip` varchar(50) NOT NULL,
-  `port` varchar(500) NOT NULL
+  `port` int(255) NOT NULL,
+  `snapshot` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

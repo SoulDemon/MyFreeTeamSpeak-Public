@@ -13,9 +13,15 @@ require __DIR__ . "/Commands/class.logsys.php";
       "password" => "",
       "name" => "freets3v2",
       "table" => "users",
-	  "servers" => "servers", #Server List In Database
-	  "userservers" => "userservers", #User Servers
-      "token_table" => "resetTokens"
+      "servers" => "servers", #Server List In Database
+      "userservers" => "userservers", #User Servers
+      "token_table" => "resetTokens",
+      "updateCheck" => "true", #true or false
+	  "authenticationKey" => "a53sf3" #Authentication Key, Used to notify updates http://webchat.esper.net/?channels=#MyFreeTeamSpeak
+  ),
+  "tsSetup" => array (
+  "tooltip" => "", #Icon for tooltip url?
+  "hostbutton" => "" #Host Button URL
   ),
   "features" => array(
     "auto_init" => true
