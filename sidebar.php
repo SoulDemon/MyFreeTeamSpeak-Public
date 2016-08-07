@@ -30,6 +30,7 @@
 						  Transfer Server
 						</button></li>
 						 <li><a  href="newtoken.php">Generate Token</a></li>
+						 <li><a  href="backupServer.php">Backup My Server</a></li>
                       </ul>
                   </li>
 
