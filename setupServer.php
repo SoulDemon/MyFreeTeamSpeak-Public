@@ -14,7 +14,7 @@ require "config.php";
           <input name="Server_Name" placeholder="Server Name" />
         </label>
         <label>
-          <input type="number" name="Slots" min="2" max="512" placeholder="Slots" />
+          <input type="number" name="Slots" min="2" max="<?php echo \Fr\Ls::checkMaxSlots();?>" placeholder="Slots" />
         </label>
 		<?php
 		$vals2 = \Fr\LS::getAvailServers();

@@ -3,7 +3,6 @@
  * For Development Purposes
  */
 ini_set("display_errors", "on");
-
 require __DIR__ . "/Commands/class.logsys.php";
 \Fr\LS::config(array(
   "db" => array(
@@ -17,9 +16,10 @@ require __DIR__ . "/Commands/class.logsys.php";
       "userservers" => "userservers", #User Servers
       "token_table" => "resetTokens",
       "updateCheck" => "true", #true or false
-	  "authenticationKey" => "a53sf3" #Authentication Key, Used to notify updates http://webchat.esper.net/?channels=#MyFreeTeamSpeak
+	  "authenticationKey" => "a543sg" #Authentication Key, Used to notify updates http://webchat.esper.net/?channels=#MyFreeTeamSpeak
   ),
   "tsSetup" => array (
+  "maxSlots" => 512,
   "tooltip" => "", #Icon for tooltip url?
   "hostbutton" => "" #Host Button URL
   ),
