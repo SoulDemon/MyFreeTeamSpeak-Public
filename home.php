@@ -7,8 +7,7 @@ if( isset($_POST['newName']) ){
 		"name" => $_POST['newName']
 	));
 }
-?>
-		 <?php
+
       if( isset($_POST['submit']) ){
         $servername = $_POST['Server_Name'];
         $Slots = $_POST['Slots'];
@@ -27,6 +26,18 @@ if( isset($_POST['newName']) ){
             echo "<label>Success Server Created</label>";
           }
         }
+      }
+	  
+      if( isset($_POST['action_token']) ){
+          $createAccount = \Fr\LS::newToken();	
+			if($createAccount === true){
+            echo "<label>Success Token Created!</label>";
+          }
+		  else
+		  {
+			  echo "<label>Something went horribly fucking wrong...</label>";
+		  }
+        
       }
       ?>
 <html lang="en">
