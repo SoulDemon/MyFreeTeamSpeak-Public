@@ -16,7 +16,7 @@ require __DIR__ . "/Commands/class.logsys.php";
       "userservers" => "userservers", #User Servers
       "token_table" => "resetTokens",
       "updateCheck" => "true", #true or false
-	  "authenticationKey" => "a543sg" #Authentication Key, Used to notify updates http://webchat.esper.net/?channels=#MyFreeTeamSpeak
+	  "authenticationKey" => "a5453" #Authentication Key, Used to notify updates http://webchat.esper.net/?channels=#MyFreeTeamSpeak
   ),
   "tsSetup" => array (
   "maxSlots" => 512,
