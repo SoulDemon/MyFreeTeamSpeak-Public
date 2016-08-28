@@ -47,7 +47,7 @@ require "config.php";
           if($createAccount === "portexists"){
             echo "<label>Port is already in use.</label>";
           } elseif($createAccount === "slot"){
-            echo "<label>Over maximum slot amount of 512</label>";
+            echo "<label>Over maximum slot amount</label>";
           } elseif($createAccount === "server"){
             echo "<label>We only allow one generation per account</label>";
           }elseif($createAccount === true){
