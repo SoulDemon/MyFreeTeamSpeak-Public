@@ -23,7 +23,7 @@ if( isset($_POST['newName']) ){
 {
 ?> 
 <label>
-<input type="radio" name="choice" value="<?php echo $val2['ip'] ?>"> <?php echo $val2['location']; ?>
+<input type="radio" name="choice" value="<?php echo $val2['ip'] ?>"> <?php echo $val2['location']; ?>, Servers:<?php echo \Fr\Ls::virtualServerCount($val2['ip'])?> / <?php echo $val2['maxServers']?>
 </label> 
 <?php
 }
@@ -47,6 +47,8 @@ if( isset($_POST['newName']) ){
             echo "<label>Over maximum slot amount of 512</label>";
           } elseif($createAccount === "server"){
             echo "<label>We only allow one generation per account</label>";
+          }elseif($createAccount === "maxServer"){
+            echo "<label>This server is currently running at max capacity, Please try a different server.</label>";
           }elseif($createAccount === true){
             echo "<label>Success Server Created.</label>";
           }

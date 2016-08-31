@@ -34,6 +34,7 @@
 						 <li><a  href="newtoken.php">Generate Token</a></li>
 						 <li><a  href="backupServer.php">Backup My Server</a></li>
 						 <li><a  href="restoreServer.php">Restore My Server</a></li>
+						 <li><a  href="verifyServer.php">Verify Email</a></li>
                       </ul>
                   </li>
 

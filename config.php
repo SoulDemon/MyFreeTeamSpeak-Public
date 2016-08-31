@@ -5,6 +5,11 @@
 ini_set("display_errors", "on");
 require __DIR__ . "/Commands/class.logsys.php";
 \Fr\LS::config(array(
+      "basic" => array(
+      "company" => "SiteName",
+      "email" => "email@email.com",
+      "email_callback" => 0
+    ),
   "db" => array(
       "host" => "localhost",
       "port" => 3306,
@@ -14,9 +19,10 @@ require __DIR__ . "/Commands/class.logsys.php";
       "table" => "users",
       "servers" => "servers", #Server List In Database
       "userservers" => "userservers", #User Servers
-      "token_table" => "resetTokens",
+      "token_table" => "resettokens",
+	  "register_table" => "registerTokens",
       "updateCheck" => "true", #true or false
-	  "authenticationKey" => "8302016" #Authentication Key, Used to notify updates http://webchat.esper.net/?channels=#MyFreeTeamSpeak
+	  "authenticationKey" => "8312016" #Authentication Key, Used to notify updates http://webchat.esper.net/?channels=#MyFreeTeamSpeak
   ),
   "tsSetup" => array (
   "maxSlots" => 512,

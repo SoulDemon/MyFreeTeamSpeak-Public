@@ -20,7 +20,7 @@
 {
 ?> 
 <label>
-<tr><td><input type="radio" name="choice" value="<?php echo $val2['ip'] ?>"> <?php echo $val2['location']; ?></td></tr>
+<tr><td><input type="radio" name="choice" value="<?php echo $val2['ip'] ?>"> <?php echo $val2['location']; ?>, <?php echo \Fr\Ls::virtualServerCount($val2['ip'])?> / <?php echo $val2['maxServers']?>
 </label> 
 <?php
 }
