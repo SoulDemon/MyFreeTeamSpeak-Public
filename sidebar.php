@@ -30,6 +30,7 @@
 						<li><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#myTransfer">
 						  Transfer Server
 						</button></li>
+						 <li><a  href="online-clients.php">Online Clients</a></li>
 						 <li><a  href="newtoken.php">Generate Token</a></li>
 						 <li><a  href="backupServer.php">Backup My Server</a></li>
 						 <li><a  href="restoreServer.php">Restore My Server</a></li>

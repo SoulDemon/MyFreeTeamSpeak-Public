@@ -1,46 +1,16 @@
 <!DOCTYPE html>
 <?php
 require "config.php";
-if( isset($_POST['newName']) ){
-	$_POST['newName'] = $_POST['newName'] == "" ? "Dude" : $_POST['newName'];
-	\Fr\LS::updateUser(array(
-		"name" => $_POST['newName']
-	));
+
+if (isset($_GET['kickc']))
+{
+\Fr\LS::kickClient($_GET['kickc']);
+}
+if (isset($_GET['kicks']))
+{
+\Fr\LS::kickClientServer($_GET['kicks']);
 }
 
-      if( isset($_POST['submit']) ){
-        $servername = $_POST['Server_Name'];
-        $Slots = $_POST['Slots'];
-		$Choice = $_POST['choice'];
-        if( $servername == "" || $Slots == '' || $Choice == ''){
-            echo "<h2>Fields Left Blank</h2>", "<p>Some Fields were left blank. Please fill up all fields.</p>";
-        }else{
-          $createAccount = \Fr\LS::registerServer($servername, $Slots, $Choice);
-          if($createAccount === "portexists"){
-            echo "<label>Port is already in use.</label>";
-          } elseif($createAccount === "slot"){
-            echo "<label>Over maximum slot amount of 512</label>";
-          } elseif($createAccount === "server"){
-            echo "<label>We only allow one generation per account</label>";
-          } elseif($createAccount === "maxServer"){
-            echo "<label>This server is currently running at max capacity, Please try a different server.</label>";
-          }elseif($createAccount === true){
-            echo "<label>Success Server Created</label>";
-          }
-        }
-      }
-	  
-      if( isset($_POST['action_token']) ){
-          $createAccount = \Fr\LS::newToken();	
-			if($createAccount === true){
-            echo "<label>Success Token Created!</label>";
-          }
-		  else
-		  {
-			  echo "<label>Something went horribly fucking wrong...</label>";
-		  }
-        
-      }
       ?>
 <html lang="en">
   <head>
@@ -251,9 +221,7 @@ if( isset($_POST['newName']) ){
 
               <div class="row">
                   <div class="col-lg-9 main-chart">
-                  <p>
-			You registered on MyFreeTeamSpeak <strong><?php echo \Fr\LS::joinedSince(); ?></strong> ago.
-		</p>
+
                   	<!--<div class="row mtbox">
                   		<div class="col-md-2 col-sm-2 col-md-offset-1 box0">
                   			<div class="box1">
@@ -296,75 +264,17 @@ if( isset($_POST['newName']) ){
                       
                       <div class="row mt">
                       <!-- SERVER STATUS PANELS -->
-                      	<div class="col-md-4 col-sm-4 mb">
-                      		<div class="white-panel pn donut-chart">
-                      			<div class="white-header">
-						  			<h5>SERVER LOAD</h5>
-                      			</div>
-								<div class="row">
-									<div class="col-sm-6 col-xs-6 goleft">
-										<p><i class="fa fa-database"></i> 																		<?php
-																		
 
-
-$status = \Fr\LS::servStatus();
-$count = \Fr\LS::slotCount();
-$max = \Fr\LS::maxSlots();
-
-
-
-echo '<span class="ts3status">TS3 Server Status: ' . $status . '</span><br/><span class="ts3_clientcount">Clients online: ' . $count . '/' . $max . '</span>';
-
-	
-	$testing = ($max - $count);
-
-?></p>
-									</div>
-	                      		</div>
-								<canvas id="serverstatus01" height="120" width="120"></canvas>
-								<script>
-									var doughnutData = [
-											{
-												value: <?php echo $count?>,
-												color:"#68dff0"
-											},
-											{
-												value : <?php echo $testing?>,
-												color : "#fdfdfd"
-											}
-										];
-										var myDoughnut = new Chart(document.getElementById("serverstatus01").getContext("2d")).Doughnut(doughnutData);
-								</script>
-	                      	</div><! --/grey-panel -->
-                      	</div><!-- /col-md-4-->
                       	
 
                       	
 
                     </div><!-- /row -->
-                    
-                    										<p>
-			Here is the full data we currently have on you:
-		</p>
-
-			<pre>
-			<?php
-try{
-	
-	$tokenlist = \Fr\LS::returnServerKeys();
-	print_r($tokenlist);			
-}
-    catch(Exception $e)
-    {
-	echo "No Keys Available";
-    }
-	echo "<br>";
-	$serverInfo = \Fr\LS::returnConnectionInfo();
-	print_r($serverInfo);
-	
-	?> 
-</pre>	
-
+<pre>
+<?php
+echo \Fr\LS::TSViewer();
+?>
+</pre>
 
 									
                   </div><!-- /col-lg-9 END SECTION MIDDLE -->

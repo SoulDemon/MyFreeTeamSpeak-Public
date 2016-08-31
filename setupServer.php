@@ -23,7 +23,7 @@ require "config.php";
 {
 ?> 
 <label>
-<input type="radio" name="choice" value="<?php echo $val2['ip'] ?>"> <?php echo $val2['location']; ?>
+<input type="radio" name="choice" value="<?php echo $val2['ip'] ?>"> <?php echo $val2['location']; ?>, Servers:<?php echo \Fr\Ls::virtualServerCount($val2['ip'])?> / <?php echo $val2['maxServers']?>
 </label> 
 <?php
 }
