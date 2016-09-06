@@ -309,16 +309,16 @@ if( isset($_POST['newName']) ){
 																		
 
 
-$status = \Fr\LS::servStatus();
+//$status = \Fr\LS::servStatus();
 $count = \Fr\LS::slotCount();
 $max = \Fr\LS::maxSlots();
 
 
 
-echo '<span class="ts3status">TS3 Server Status: ' . $status . '</span><br/><span class="ts3_clientcount">Clients online: ' . $count . '/' . $max . '</span>';
+echo '<span class="ts3status">TS3 Server Status: ' . $count[0] . '</span><br/><span class="ts3_clientcount">Clients online: ' . $count[1] . '/' . $max . '</span>';
 
 	
-	$testing = ($max - $count);
+	$testing = ($max - $count[1]);
 
 ?></p>
 									</div>
@@ -327,7 +327,7 @@ echo '<span class="ts3status">TS3 Server Status: ' . $status . '</span><br/><spa
 								<script>
 									var doughnutData = [
 											{
-												value: <?php echo $count?>,
+												value: <?php echo $count[1]?>,
 												color:"#68dff0"
 											},
 											{
@@ -345,9 +345,9 @@ echo '<span class="ts3status">TS3 Server Status: ' . $status . '</span><br/><spa
 
                     </div><!-- /row -->
                     
-                    										<p>
-			Here is the full data we currently have on you:
-		</p>
+<p>
+Here is the full data we currently have on you:
+</p>
 
 			<pre>
 			<?php
