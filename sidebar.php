@@ -44,24 +44,22 @@
 						 <li><a  href="newtoken.php">Generate Token</a></li>
 						 <li><a  href="backupServer.php">Backup My Server</a></li>
 						 <li><a  href="restoreServer.php">Restore My Server</a></li>
-						 <li><a  href="verifyServer.php">Verify Email</a></li>
 						 <!--<li>		<form action="home.php" method="POST">
 						 <input type="submit" name="action_token" />
-									</form></li>
+									</form></li> -->
                       </ul>
-                  </li> -->
+                  </li> 
 
-                 <!-- <li class="sub-menu">
+                  <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-cogs"></i>
-                          <span>Components</span>
+                          <span>My Account</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="calendar.html">Calendar</a></li>
-                          <li><a  href="gallery.html">Gallery</a></li>
-                          <li><a  href="todo_list.html">Todo List</a></li>
+						 <li><a  href="verifyServer.php">Verify Email</a></li>
                       </ul>
                   </li>
+				  <!--
                   <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-book"></i>
