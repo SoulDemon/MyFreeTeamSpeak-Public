@@ -14,6 +14,7 @@ if(isset($_POST['action_login'])){
 		}
 	}
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,6 +59,47 @@ if(isset($_POST['action_login'])){
         echo "<h2>{$msg[0]}</h2><p>{$msg[1]}</p>";
       }
       ?>
+	   <?php
+							  $ip = getenv('HTTP_CLIENT_IP')?:
+	getenv('HTTP_X_FORWARDED_FOR')?:
+	getenv('HTTP_X_FORWARDED')?:
+	getenv('HTTP_FORWARDED_FOR')?:
+	getenv('HTTP_FORWARDED')?:
+	getenv('REMOTE_ADDR');
+	
+      if( isset($_POST['submit']) ){
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $password = $_POST['pass'];
+        $retyped_password = $_POST['retyped_password'];
+        $name = $_POST['name'];
+        if( $username == "" || $email == "" || $password == '' || $retyped_password == '' || $name == '' ){
+            echo "<h2>Fields Left Blank</h2>", "<p>Some Fields were left blank. Please fill up all fields.</p>";
+        }elseif( !\Fr\LS::validEmail($email) ){
+            echo "<h2>E-Mail Is Not Valid</h2>", "<p>The E-Mail you gave is not valid</p>";
+        }elseif( !ctype_alnum($username) ){
+            echo "<h2>Invalid Username</h2>", "<p>The Username is not valid. Only ALPHANUMERIC characters are allowed and shouldn't exceed 10 characters.</p>";
+        }elseif($password != $retyped_password){
+            echo "<h2>Passwords Don't Match</h2>", "<p>The Passwords you entered didn't match</p>";
+        }else{
+          $createAccount = \Fr\LS::register($username, $password, $ip,
+            array(
+              "email" => $email,
+              "name" => $name,
+              "created" => date("Y-m-d H:i:s") // Just for testing
+            )
+          );
+          if($createAccount === "exists"){
+            echo "<label>User Exists.</label>";
+          }elseif($createAccount === "ipexists")
+		  {
+		  echo "<label>Ip Exists, You may only create one account.</labe>";
+		  }elseif($createAccount === true){
+            echo "<label>Success. Created account. <a href='login.php'>Log In</a></label>";
+          }
+        }
+      }
+							  ?>
 		        <div class="login-wrap">
 		            <input name="login" type="text" class="form-control" placeholder="User ID" autofocus>
 		            <br>
@@ -74,9 +116,7 @@ if(isset($_POST['action_login'])){
 
 		            <div class="registration">
 		                Don't have an account yet?<br/>
-		                <a class="" href="register.php">
-		                    Create an account
-		                </a>
+		                <a data-toggle="modal" href="login.html#register"> Create One!</a>
 		            </div>
 		
 		        </div>
@@ -101,28 +141,49 @@ if(isset($_POST['action_login'])){
 		              </div>
 		          </div>
 		          <!-- modal -->
-		
-		      </form>	  	
-	  	
-	  	</div>
-	  </div>
-		
-		          <!-- Modal -->
-		          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+				  
+				  		          <!-- Modal -->
+		          <div aria-hidden="true" aria-labelledby="register" role="dialog" tabindex="-1" id="register" class="modal fade">
 		              <div class="modal-dialog">
 		                  <div class="modal-content">
 		                      <div class="modal-header">
 		                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		                          <h4 class="modal-title">Forgot Password ?</h4>
+		                          <h4 class="modal-title">Register Account</h4>
 		                      </div>
 		                      <div class="modal-body">
-		                          <p>Enter your e-mail address below to reset your password.</p>
-		                          <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+							  <center>
+							 
+		                            <form action="login.php#register" method="POST">
+        <label>
+          <input name="username" placeholder="Username" />
+        </label>
+		<br/>
+        <label>
+          <input name="email" placeholder="E-Mail" /> 
+        </label>
+		<br/>
+        <label>
+          <input name="pass" type="password" placeholder="Password" />
+        </label>
+		<br/>
+        <label>
+          <input name="retyped_password" type="password" placeholder="Retype Password" />
+        </label>
+		<br/>
+        <label>
+          <input name="name" placeholder="Name" />
+        </label>
+		<br/>
+        <label>
+          <button name="submit">Register</button>
+        </label>
+      </form>
+	  </center>
 		
 		                      </div>
 		                      <div class="modal-footer">
 		                          <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-		                          <button class="btn btn-theme" type="button">Submit</button>
+		                          
 		                      </div>
 		                  </div>
 		              </div>
@@ -133,6 +194,8 @@ if(isset($_POST['action_login'])){
 	  	
 	  	</div>
 	  </div>
+		
+
 
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="assets/js/jquery.js"></script>
