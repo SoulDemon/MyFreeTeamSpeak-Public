@@ -22,7 +22,7 @@ require __DIR__ . "/Commands/class.logsys.php";
       "token_table" => "resettokens",
 	  "register_table" => "registerTokens",
       "updateCheck" => "true", #true or false
-	  "authenticationKey" => "8312016" #Authentication Key, Used to notify updates http://webchat.esper.net/?channels=#MyFreeTeamSpeak
+	  "authenticationKey" => "0907016" #Authentication Key, Used to notify updates http://webchat.esper.net/?channels=#MyFreeTeamSpeak
   ),
   "tsSetup" => array (
   "maxSlots" => 512,
