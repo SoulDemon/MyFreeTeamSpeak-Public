@@ -9,7 +9,7 @@
 						      </div>
 						      <div class="modal-body">
 						<div id="login-form">
-						<form action="transferServer.php" method="post">
+						<form action="home.php" method="post">
 						<table align="center" width="30%" border="0">
 						<tr>
 						
@@ -34,7 +34,7 @@
 						      </div>
 						      <div class="modal-footer">
 						        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								 <button name="submit" class="btn btn-primaery">Submit Request</button>
+								 <button name="transferServer"class="btn btn-primaery">Submit Request</button>
 								</form>
 						      </div>
 						    </div>

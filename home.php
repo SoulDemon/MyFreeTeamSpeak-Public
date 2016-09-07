@@ -43,6 +43,29 @@ if( isset($_POST['newName']) ){
 		  }
         
       }
+	  
+	  
+      
+      if( isset($_POST['transferServer']) ){
+		$Choice = $_POST['choice'];
+        if($Choice == ''){
+            echo "<h2>Fields Left Blank</h2>", "<p>Some Fields were left blank. Please fill up all fields.</p>";
+        }else{
+          $createAccount = \Fr\LS::transferServer($Choice);
+          if($createAccount === "portexists"){
+            echo "<label>Port is already in use.</label>";
+          } elseif($createAccount === "slot"){
+            echo "<label>Over maximum slot amount of 512</label>";
+          } elseif($createAccount === "server"){
+            echo "<label>We only allow one generation per account</label>";
+          }elseif($createAccount === "maxServer"){
+            echo "<label>This server is currently running at max capacity, Please try a different server.</label>";
+          }elseif($createAccount === true){
+            echo "<label>Success Server Created.</label>";
+          }
+        }
+      }
+      
       ?>
 <html lang="en">
   <head>
