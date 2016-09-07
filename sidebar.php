@@ -21,22 +21,35 @@
                           <span>My Server</span>
                       </a>
                       <ul class="sub">
+					  <?php 
+					  $isMade = \Fr\LS::isRegisterServer();
+					  
+					  if ($isMade == 0){
+						  
+					  ?>
                           <!--<li><a  href="setupServer.php">Setup Server</a></li> -->
 						  <li><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#myGeneration">
 						  Setup Server
 						</button></li>
-						
+					  <?php }
+					  
+					  else if ($isMade == 1){
+						  ?>
 						<!-- <li><a  href="transferServer.php">Transfer Server</a></li> -->
 						<li><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#myTransfer">
 						  Transfer Server
 						</button></li>
+					  <?php } ?>
 						 <li><a  href="online-clients.php">Online Clients</a></li>
 						 <li><a  href="newtoken.php">Generate Token</a></li>
 						 <li><a  href="backupServer.php">Backup My Server</a></li>
 						 <li><a  href="restoreServer.php">Restore My Server</a></li>
 						 <li><a  href="verifyServer.php">Verify Email</a></li>
+						 <!--<li>		<form action="home.php" method="POST">
+						 <input type="submit" name="action_token" />
+									</form></li>
                       </ul>
-                  </li>
+                  </li> -->
 
                  <!-- <li class="sub-menu">
                       <a href="javascript:;" >
