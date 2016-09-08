@@ -338,7 +338,7 @@ $max = \Fr\LS::maxSlots();
 
 
 
-echo '<span class="ts3status">TS3 Server Status: ' . $count[0] . '</span><br/><span class="ts3_clientcount">Clients online: ' . $count[1] . '/' . $max . '</span>';
+echo '<span class="ts3status">Server Status: ' . $count[0] . '</span><br/><span class="ts3_clientcount">Clients online: ' . $count[1] . '/' . $max . '</span><br/><span class="ts3_packetloss">Packet Loss: ' . $count[2] .'</span>';
 
 	
 	$testing = ($max - $count[1]);

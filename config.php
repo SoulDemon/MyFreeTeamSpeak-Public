@@ -28,6 +28,7 @@ require __DIR__ . "/Commands/class.logsys.php";
   "maxSlots" => 512,
   "tooltip" => "", #Icon for tooltip url?
   "hostbutton" => "", #Host Button URL
+  "gfxurl" => "", #GFX url?
   "MyFreeTeamSpeakDNS" => "no", #Yes or No, Cancels out the tsdns setting below
   "tsdns" => "/tsdns-linux/tsdns_settings.ini" #Currently being implemented still Windows/Linux...
   ),
