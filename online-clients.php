@@ -61,7 +61,7 @@ if (isset($_GET['kicks']))
                 <!--  notification start -->
                 <ul class="nav top-menu">
                     <!-- settings start -->
-                    <li class="dropdown">
+                    <!--  <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="index.php#">
                             <i class="fa fa-tasks"></i>
                             <span class="badge bg-theme">4</span>
@@ -130,7 +130,7 @@ if (isset($_GET['kicks']))
                     </li>
                     <!-- settings end -->
                     <!-- inbox dropdown start-->
-                    <li id="header_inbox_bar" class="dropdown">
+                  <!--  <li id="header_inbox_bar" class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="index.php#">
                             <i class="fa fa-envelope-o"></i>
                             <span class="badge bg-theme">5</span>
@@ -193,7 +193,7 @@ if (isset($_GET['kicks']))
                             </li>
                         </ul>
                     </li>
-                    <!-- inbox dropdown end -->
+                    --><!-- inbox dropdown end -->
                 </ul>
                 <!--  notification end -->
             </div>
