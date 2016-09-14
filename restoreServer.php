@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 require "config.php";
 if( isset($_POST['newName']) ){
@@ -29,6 +28,7 @@ if( isset($_POST['newName']) ){
         }
       }
       ?>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">

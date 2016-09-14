@@ -1,12 +1,16 @@
 <?php
 require "config.php";
-if( isset($_POST['newName']) ){
-	$_POST['newName'] = $_POST['newName'] == "" ? "Dude" : $_POST['newName'];
-	\Fr\LS::updateUser(array(
-		"name" => $_POST['newName']
-	));
+
+if (isset($_GET['kickc']))
+{
+\Fr\LS::kickClient($_GET['kickc']);
 }
-?>
+if (isset($_GET['kicks']))
+{
+\Fr\LS::kickClientServer($_GET['kicks']);
+}
+
+      ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -126,7 +130,7 @@ if( isset($_POST['newName']) ){
                     </li>
                     <!-- settings end -->
                     <!-- inbox dropdown start-->
-                 <!--   <li id="header_inbox_bar" class="dropdown">
+                  <!--  <li id="header_inbox_bar" class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="index.php#">
                             <i class="fa fa-envelope-o"></i>
                             <span class="badge bg-theme">5</span>
@@ -189,7 +193,7 @@ if( isset($_POST['newName']) ){
                             </li>
                         </ul>
                     </li>
-                  -->  <!-- inbox dropdown end -->
+                    --><!-- inbox dropdown end -->
                 </ul>
                 <!--  notification end -->
             </div>
@@ -217,7 +221,7 @@ if( isset($_POST['newName']) ){
 
               <div class="row">
                   <div class="col-lg-9 main-chart">
-                  
+
                   	<!--<div class="row mtbox">
                   		<div class="col-md-2 col-sm-2 col-md-offset-1 box0">
                   			<div class="box1">
@@ -260,15 +264,33 @@ if( isset($_POST['newName']) ){
                       
                       <div class="row mt">
                       <!-- SERVER STATUS PANELS -->
-                      	
-                      	</div><!-- /col-md-4-->
-                      	
-<!-- Content -->
+
                       	
 
-<!-- end content -->
-                    
-                    									
+                      	
+
+                    </div><!-- /row -->
+<?php 
+$serverInfo = \Fr\LS::editServer();
+?>
+<div class="col-md-8">
+
+                            <form action="virtual-server.php" method="post">
+                               <p></p>
+                                Name: <input type="text" id="focusedInput" class="form-control" name="nameofserver" value="<?php echo $serverInfo[0];?>"> <br>
+                                Slots: <input type="number" id="focusedInput" class="form-control" min="1" max="512"name="slotsofserver" value="<?php echo $serverInfo[1];?>"><br>
+                                Reserved slots: <input type="number" id="focusedInput" class="form-control" min="0" max="100"name="reservedslots" value="<?php echo $serverInfo[2];?>"><br>
+                                Welcome message: <input type="text" id="focusedInput" class="form-control" name="welcomemessage" maxlength="1024" value="<?php echo $serverInfo[3];?>"><br>
+                                Needed security level: <input type="number" id="focusedInput" class="form-control" min="0" max="44"name="securitylevel" value="<?php echo $serverInfo[4];?>"><br>
+                                GFX img (Host banner) URL: <input type="text" id="focusedInput" class="form-control" name="gfximgurl"value="<?php echo $serverInfo[5];?>"><br>
+                                GFX (Host banner) URL: <input type="text" id="focusedInput" class="form-control" name="gfxurl" maxlength="1024" value="<?php echo $serverInfo[6];?>"><br>
+                                <br/>
+
+                                <input type="submit" value="Edit Information" name="edit" class="btn btn-block btn-danger">
+                            </form><br/>
+
+                        </div>
+
 
 									
                   </div><!-- /col-lg-9 END SECTION MIDDLE -->

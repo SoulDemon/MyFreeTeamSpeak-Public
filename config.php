@@ -15,12 +15,7 @@ require __DIR__ . "/Commands/class.logsys.php";
       "port" => 3306,
       "username" => "root",
       "password" => "",
-      "name" => "freets3v2",
-      "table" => "users",
-      "servers" => "servers", #Server List In Database
-      "userservers" => "userservers", #User Servers
-      "token_table" => "resettokens",
-	  "register_table" => "registerTokens",
+      "name" => "freets3v2", #The Database Name
       "updateCheck" => "true", #true or false
 	  "authenticationKey" => "09082016" #Authentication Key, Used to notify updates http://webchat.esper.net/?channels=#MyFreeTeamSpeak
   ),

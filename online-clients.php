@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 require "config.php";
 
@@ -12,6 +11,7 @@ if (isset($_GET['kicks']))
 }
 
       ?>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
