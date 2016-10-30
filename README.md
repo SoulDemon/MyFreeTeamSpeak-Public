@@ -23,9 +23,9 @@ MyFreeTeamSpeak Basic Authentication System, Will be used to notify Panel Update
 
 
 * TODO LIST*
-Install folder [future]
+Install folder [future] 14%
 
-Personal Server Editting/Details [4% Done] List Below what is expected
+Personal Server Editting/Details [72% Done] List Below what is expected
 
 * Server Name
 
