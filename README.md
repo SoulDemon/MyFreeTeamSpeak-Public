@@ -50,4 +50,4 @@ Personal Server Editting/Details [72% Done] List Below what is expected
 Any Others?...
 
 Tips / Guide:
-Link coming soon!
+[How to import/setup SQL database for installation](https://github.com/SoulDemon/MyFreeTeamSpeak-Public/wiki/How-to-import-setup-SQL-database-for-installation)
