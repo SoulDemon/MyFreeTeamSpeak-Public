@@ -1,15 +1,6 @@
 <?php
 require "config.php";
 
-if (isset($_GET['kickc']))
-{
-\Fr\LS::kickClient($_GET['kickc']);
-}
-if (isset($_GET['kicks']))
-{
-\Fr\LS::kickClientServer($_GET['kicks']);
-}
-
       ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -269,14 +260,39 @@ if (isset($_GET['kicks']))
                       	
 
                     </div><!-- /row -->
+					
+				
+				<?php
+									if( isset($_POST['submit']) ){
+						        $servername = $_POST['nameofserver'];
+								$Slots = $_POST['slotsofserver'];
+								$rSlots = $_POST['reservedslots'];
+								$wMessage = $_POST['welcomemessage'];
+								$sLevel = $_POST['securitylevel'];
+								$gfxIMG = $_POST['gfximgurl'];
+								$gfxBanner = $_POST['gfxurl'];								
+						$editServer = \Fr\LS::editServerVariables($servername, $Slots, $rSlots, $wMessage, $sLevel, $gfxIMG, $gfxBanner);	
+						if($editServer === true){
+							echo "<br /><div class='alert alert-success' role='alert'>Server Editted</div>";
+						}
+						else if($editServer === false)
+						{
+							echo "<br /><div class='alert alert-danger' role='alert'>Slots higher than assigned max..</div>";
+						}	
+						else{
+							echo "<br /><div class='alert alert-danger' role='alert'>Something went horribly fucking wrong..</div>";
+						}
+					}
+				?>
 					<img src="http://wiki.tesnexus.com/images/7/7c/Work_in_Progress_Header.png" style="width:304px;height:228px;>
 
 <?php 
 $serverInfo = \Fr\LS::editServer();
+
 ?>
 <div class="col-md-8">
 
-                            <form action="#" method="post">
+                            <form action="editserver.php" method="POST">
                                <p></p>
                                 Name: <input type="text" id="focusedInput" class="form-control" name="nameofserver" value="<?php echo $serverInfo[0];?>"> <br>
                                 Slots: <input type="number" id="focusedInput" class="form-control" min="1" max="512"name="slotsofserver" value="<?php echo $serverInfo[1];?>"><br>
@@ -287,7 +303,7 @@ $serverInfo = \Fr\LS::editServer();
                                 GFX (Host banner) URL: <input type="text" id="focusedInput" class="form-control" name="gfxurl" maxlength="1024" value="<?php echo $serverInfo[6];?>"><br>
                                 <br/>
 
-                                <input type="submit" value="Edit Information" name="edit" class="btn btn-block btn-danger">
+                                <input type="submit" value="Edit Information" name="submit" class="btn btn-block btn-danger">
                             </form><br/>
 
                         </div>
