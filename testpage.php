@@ -1,15 +1,70 @@
 <?php
 require "config.php";
-
-if (isset($_GET['kickc']))
-{
-\Fr\LS::kickClient($_GET['kickc']);
-}
-if (isset($_GET['kicks']))
-{
-\Fr\LS::kickClientServer($_GET['kicks']);
+if( isset($_POST['newName']) ){
+	$_POST['newName'] = $_POST['newName'] == "" ? "Dude" : $_POST['newName'];
+	\Fr\LS::updateUser(array(
+		"name" => $_POST['newName']
+	));
 }
 
+      if( isset($_POST['submit']) ){
+        $servername = $_POST['Server_Name'];
+        $Slots = $_POST['Slots'];
+		$Choice = $_POST['choice'];
+        if( $servername == "" || $Slots == '' || $Choice == ''){
+            echo "<h2>Fields Left Blank</h2>", "<p>Some Fields were left blank. Please fill up all fields.</p>";
+        }else{
+          $createAccount = \Fr\LS::registerServer($servername, $Slots, $Choice);
+          if($createAccount === "portexists"){
+            echo "<label>Port is already in use.</label>";
+          } elseif($createAccount === "slot"){
+            echo "<label>Over maximum slot amount of 512</label>";
+          } elseif($createAccount === "server"){
+            echo "<label>We only allow one generation per account</label>";
+          } elseif($createAccount === "maxServer"){
+            echo "<label>This server is currently running at max capacity, Please try a different server.</label>";
+          } elseif($createAccount === "verification"){
+            echo "<label>Please verify your email address.</label>";
+          }elseif($createAccount === true){
+            echo "<label>Success Server Created</label>";
+          }
+        }
+      }
+	  
+      if( isset($_POST['action_token']) ){
+          $createAccount = \Fr\LS::newToken();	
+			if($createAccount === true){
+            echo "<label>Success Token Created!</label>";
+          }
+		  else
+		  {
+			  echo "<label>Something went horribly fucking wrong...</label>";
+		  }
+        
+      }
+	  
+	  
+      
+      if( isset($_POST['transferServer']) ){
+		$Choice = $_POST['choice'];
+        if($Choice == ''){
+            echo "<h2>Fields Left Blank</h2>", "<p>Some Fields were left blank. Please fill up all fields.</p>";
+        }else{
+          $createAccount = \Fr\LS::transferServer($Choice);
+          if($createAccount === "portexists"){
+            echo "<label>Port is already in use.</label>";
+          } elseif($createAccount === "slot"){
+            echo "<label>Over maximum slot amount of 512</label>";
+          } elseif($createAccount === "server"){
+            echo "<label>We only allow one generation per account</label>";
+          }elseif($createAccount === "maxServer"){
+            echo "<label>This server is currently running at max capacity, Please try a different server.</label>";
+          }elseif($createAccount === true){
+            echo "<label>Success Server Created.</label>";
+          }
+        }
+      }
+      
       ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,7 +116,7 @@ if (isset($_GET['kicks']))
                 <!--  notification start -->
                 <ul class="nav top-menu">
                     <!-- settings start -->
-                    <!--  <li class="dropdown">
+                    <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="index.php#">
                             <i class="fa fa-tasks"></i>
                             <span class="badge bg-theme">4</span>
@@ -130,7 +185,7 @@ if (isset($_GET['kicks']))
                     </li>
                     <!-- settings end -->
                     <!-- inbox dropdown start-->
-                  <!--  <li id="header_inbox_bar" class="dropdown">
+                    <li id="header_inbox_bar" class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="index.php#">
                             <i class="fa fa-envelope-o"></i>
                             <span class="badge bg-theme">5</span>
@@ -193,7 +248,7 @@ if (isset($_GET['kicks']))
                             </li>
                         </ul>
                     </li>
-                    --><!-- inbox dropdown end -->
+                    <!-- inbox dropdown end -->
                 </ul>
                 <!--  notification end -->
             </div>
@@ -221,7 +276,9 @@ if (isset($_GET['kicks']))
 
               <div class="row">
                   <div class="col-lg-9 main-chart">
-
+                  <p>
+			You registered on MyFreeTeamSpeak <strong><?php echo \Fr\LS::joinedSince(); ?></strong> ago.
+		</p>
                   	<!--<div class="row mtbox">
                   		<div class="col-md-2 col-sm-2 col-md-offset-1 box0">
                   			<div class="box1">
@@ -264,33 +321,65 @@ if (isset($_GET['kicks']))
                       
                       <div class="row mt">
                       <!-- SERVER STATUS PANELS -->
+                      	<div class="col-md-4 col-sm-4 mb">
+                      		<div class="white-panel pn donut-chart">
+                      			<div class="white-header">
+						  			<h5>SERVER LOAD</h5>
+                      			</div>
+								<div class="row">
+									<div class="col-sm-6 col-xs-6 goleft">
+										<p><i class="fa fa-database"></i> 																		<?php
+																		
 
+
+//$status = \Fr\LS::servStatus();
+$count = \Fr\LS::slotCount();
+$max = \Fr\LS::maxSlots();
+
+
+
+echo '<span class="ts3status">TS3 Server Status: ' . $count[0] . '</span><br/><span class="ts3_clientcount">Clients online: ' . $count[1] . '/' . $max . '</span>';
+
+	
+	$testing = ($max - $count[1]);
+
+?></p>
+									</div>
+	                      		</div>
+								<canvas id="serverstatus01" height="120" width="120"></canvas>
+								<script>
+									var doughnutData = [
+											{
+												value: <?php echo $count[1]?>,
+												color:"#68dff0"
+											},
+											{
+												value : <?php echo $testing?>,
+												color : "#fdfdfd"
+											}
+										];
+										var myDoughnut = new Chart(document.getElementById("serverstatus01").getContext("2d")).Doughnut(doughnutData);
+								</script>
+	                      	</div><! --/grey-panel -->
+                      	</div><!-- /col-md-4-->
                       	
+
                       	
 
                     </div><!-- /row -->
-					<img src="http://wiki.tesnexus.com/images/7/7c/Work_in_Progress_Header.png" style="width:304px;height:228px;>
+                    
+<p>
+Here is the full data we currently have on you:
+</p>
 
-<?php 
-$serverInfo = \Fr\LS::editServer();
-?>
-<div class="col-md-8">
+			<pre>
+			<?php
 
-                            <form action="#" method="post">
-                               <p></p>
-                                Name: <input type="text" id="focusedInput" class="form-control" name="nameofserver" value="<?php echo $serverInfo[0];?>"> <br>
-                                Slots: <input type="number" id="focusedInput" class="form-control" min="1" max="512"name="slotsofserver" value="<?php echo $serverInfo[1];?>"><br>
-                                Reserved slots: <input type="number" id="focusedInput" class="form-control" min="0" max="100"name="reservedslots" value="<?php echo $serverInfo[2];?>"><br>
-                                Welcome message: <input type="text" id="focusedInput" class="form-control" name="welcomemessage" maxlength="1024" value="<?php echo $serverInfo[3];?>"><br>
-                                Needed security level: <input type="number" id="focusedInput" class="form-control" min="0" max="44"name="securitylevel" value="<?php echo $serverInfo[4];?>"><br>
-                                GFX img (Host banner) URL: <input type="text" id="focusedInput" class="form-control" name="gfximgurl"value="<?php echo $serverInfo[5];?>"><br>
-                                GFX (Host banner) URL: <input type="text" id="focusedInput" class="form-control" name="gfxurl" maxlength="1024" value="<?php echo $serverInfo[6];?>"><br>
-                                <br/>
+	\Fr\LS::ts3PacketLoss();
+	
+	?> 
+</pre>	
 
-                                <input type="submit" value="Edit Information" name="edit" class="btn btn-block btn-danger">
-                            </form><br/>
-
-                        </div>
 
 
 									
